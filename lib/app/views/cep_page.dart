@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:viacep_app/app/models/cep_model.dart';
-import 'package:viacep_app/app/stores/bloc/cep_bloc.dart';
-import 'package:viacep_app/app/stores/bloc/cep_events.dart';
-import 'package:viacep_app/app/stores/bloc/cep_states.dart';
+import 'package:viacep_app/app/stores/bloc_stream/cep_bloc.dart';
+import 'package:viacep_app/app/stores/bloc_stream/cep_events.dart';
+import 'package:viacep_app/app/stores/bloc_stream/cep_states.dart';
+import 'package:viacep_app/app/stores/flutter_bloc/cep_flutter_bloc.dart';
 import 'package:viacep_app/app/views/widgets/button_custom.dart';
 import 'package:viacep_app/app/views/widgets/card_result_custom.dart';
 import 'package:viacep_app/app/views/widgets/input_custom.dart';
@@ -20,17 +22,21 @@ class CepPage extends StatefulWidget {
 }
 
 class _CepPageState extends State<CepPage> {
-  late CepBloc controller;
+  late CepFlutterBloc controller;
   final cepModel = CepModel.empty();
 
   @override
   void initState() {
     super.initState();
-    controller = GetIt.instance<CepBloc>();
+    controller = GetIt.instance<CepFlutterBloc>();
   }
 
+  // void fetchCep(CepModel model) {
+  //   controller.input.add(FetchCepEvent(model));
+  // }
+
   void fetchCep(CepModel model) {
-    controller.input.add(FetchCepEvent(model));
+    controller.add(FetchCepEvent(model));
   }
 
   @override
@@ -59,11 +65,9 @@ class _CepPageState extends State<CepPage> {
                   onTap: () => fetchCep(cepModel),
                 ),
                 16.0.spacingVertical,
-                StreamBuilder<CepStates>(
-                  stream: controller.stream,
-                  builder: (_, snapshot) {
-                    CepStates? state = snapshot.data;
-
+                BlocBuilder<CepFlutterBloc, CepStates>(
+                  bloc: controller,
+                  builder: (context, state) {
                     return switch (state) {
                       SuccessCepState(:final model) =>
                         CardResultCustom(cepModel: model),
@@ -71,7 +75,7 @@ class _CepPageState extends State<CepPage> {
                           message,
                           style: TextStyles.h1,
                         ),
-                      _ => const SizedBox.shrink(),
+                      InitialCepState() => const SizedBox.shrink()
                     };
                   },
                 )
