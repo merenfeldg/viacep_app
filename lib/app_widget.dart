@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:viacep_app/app/controllers/cep_controller.dart';
 import 'package:viacep_app/app/views/cep_page.dart';
 
 class AppWidget extends StatelessWidget {
@@ -14,7 +13,7 @@ class AppWidget extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: CepPage(controller: CepController()),
+      home: const CepPage(),
     );
   }
 }

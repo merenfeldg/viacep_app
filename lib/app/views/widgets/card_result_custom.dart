@@ -26,7 +26,7 @@ class CardResultCustom extends StatelessWidget {
           8.0.spacingVertical,
           Text('RUA: ${cepModel.logradouro}'),
           8.0.spacingVertical,
-          Text('ESTADO: ${cepModel.logradouro}'),
+          Text('ESTADO: ${cepModel.estado}'),
           8.0.spacingVertical,
           Text('REGIAO: ${cepModel.regiao}'),
         ],
