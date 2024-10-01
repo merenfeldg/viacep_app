@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:viacep_app/app/models/cep_model.dart';
 import 'package:viacep_app/shared/extensions/extensions.dart';
+import 'package:viacep_app/shared/styles/text_styles.dart';
 
 class CardResultCustom extends StatelessWidget {
   const CardResultCustom({
@@ -22,13 +23,25 @@ class CardResultCustom extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text('CEP: ${cepModel.cep}'),
+          Text(
+            'CEP: ${cepModel.cep}',
+            style: TextStyles.h2,
+          ),
           8.0.spacingVertical,
-          Text('RUA: ${cepModel.logradouro}'),
+          Text(
+            'ROAD: ${cepModel.logradouro}',
+            style: TextStyles.h2,
+          ),
           8.0.spacingVertical,
-          Text('ESTADO: ${cepModel.estado}'),
+          Text(
+            'STATE: ${cepModel.estado}',
+            style: TextStyles.h2,
+          ),
           8.0.spacingVertical,
-          Text('REGIAO: ${cepModel.regiao}'),
+          Text(
+            'REGION: ${cepModel.regiao}',
+            style: TextStyles.h2,
+          ),
         ],
       ),
     );

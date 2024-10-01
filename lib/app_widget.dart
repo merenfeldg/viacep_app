@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:viacep_app/app/views/cep_page.dart';
+import 'package:viacep_app/app/views/cep_page_bloc_stream.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({super.key});

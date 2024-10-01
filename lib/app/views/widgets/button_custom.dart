@@ -23,7 +23,7 @@ class ButtonCustom extends StatelessWidget {
         ),
         child: const Center(
           child: Text(
-            'Buscar',
+            'Search',
             style: TextStyle(
               color: Colors.white,
               fontSize: 16,

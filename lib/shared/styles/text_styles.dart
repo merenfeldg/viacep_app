@@ -8,4 +8,8 @@ class TextStyles {
     color: Colors.black,
     fontWeight: FontWeight.bold,
   );
+  static TextStyle h2 = const TextStyle(
+    fontSize: 20,
+    color: Colors.black,
+  );
 }

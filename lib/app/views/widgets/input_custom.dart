@@ -15,7 +15,7 @@ class InputCustom extends StatelessWidget {
       maxLength: 8,
       keyboardType: TextInputType.number,
       decoration: const InputDecoration(
-        labelText: 'Digite o CEP',
+        labelText: 'Enter the CEP',
       ),
     );
   }
